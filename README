@@ -9,6 +9,10 @@ provided by the RailsApps Project:
 http://railsapps.github.io/
 
 
+Last step Hardcode the Data 
+
+Need to set api_source as the url for customers "https://<your-invoice-here>/api/customers?api_token=<api_token>"
+
 
 ________________________
 
