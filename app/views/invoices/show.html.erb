@@ -1,0 +1,142 @@
+  <div id="page-wrap">
+    <textarea id="header" class="headerstyle">TAX INVOICE</textarea>
+    <div id="identity">
+      <h3><b>Aura Aerosols </b></h3>
+        <div id="logo">              
+              <%= image_tag "logo.png", :id => "image" %>
+        </div>
+    <p>Address: 215, Siddhivinayak Sankul, Station Road, Kalyan West, MS -421301</p> 
+    <p>Phone No: 9930648544 / 9082006201</p>
+    <p>email id : accounts@auraaerosols.in</p>
+
+<div class="row-fluid">
+    <div class="span12">
+
+        <!-- Changed from `hidden` to `auto`. -->
+       
+
+            <!-- This is the div that does the trick: -->
+            <div style="width:1200px;">
+
+            <div style="display:inline-block;width:150px;"><b>GST id:</b><p>27AAVFA6549B1Z7</p></div>
+            <div style="display:inline-block;width:100px;"><b>Pan No:</b><p>AAVFA6549B</p></div>
+            
+        </div>
+    </div>
+</div>
+
+    
+   <div style="clear:both"></div>
+
+    <div id="customer">
+<!--Table Customer -->
+         <table id="meta">
+                <tr>
+                    <td class="meta-head">Invoice #</td>
+                    <td><textarea><%= @invoice.invoice_number%></textarea></td>
+                </tr>
+                <tr>
+                    <td class="meta-head">Date</td>
+                    <td><textarea id="date"><%= @invoice.invoice_date %></textarea></td>
+                </tr>
+                <tr>
+                    <td class="meta-head">Purchase Order No:</td>
+                    <td><div class="due"><%= @invoice.purchase_order_no %> </div></td>
+                </tr>
+
+            </table>
+
+            <table>
+                <tr>
+                    <td class="meta-head">Billing Name:</td>
+                    <td><textarea id="customer-title"><%= @invoice.billing_name %> </textarea></td>
+                </tr>
+                <tr>
+
+                    <td class="meta-head">Billing Address:</td>
+                    <td><textarea id="address"><%= @invoice.billing_address%></textarea></td>
+                </tr>
+                <tr>
+                    <td class="meta-head">GST Id:</td>
+                    <td><div class="due"><%=@invoice.billing_gstid %></div></td>
+                </tr>
+
+            </table>
+    </div>
+    
+    <table id="items">
+    
+      <tr>
+          <th>Sr No.</th>
+          <th>Description</th>
+          <th>HSN Code</th>
+          <th>Quantity</th>
+          <th>Rate</th>
+          <th>Total</th>
+      </tr>
+      
+      <tr class="item-row">
+          <td class="">1</td>
+          <td class="description"><textarea><%= @invoice.description %></textarea></td>
+          <td class="">3304900</td>
+          <td><textarea class="qty"><%= @invoice.quantity %></textarea></td>
+          <td><textarea class="cost"><%= @invoice.rate %></textarea></td>
+          <td><span class="price"><%= @invoice.total %></span></td>
+      </tr>
+
+      <tr class="item-row">
+          <td class=""><textarea>2</textarea></td>
+          <td class="description"><textarea>Water Diffuser Refill</textarea></td>
+          <td><textarea class="qty">3304900</textarea></td>
+          <td><textarea class="qty">1</textarea></td>
+          <td><textarea class="cost">$650.00</textarea></td>
+          <td><span class="price">$650.00</span></td>
+      </tr>
+      
+      <tr>
+          <td colspan="2" class="blank"><b>NEFT Details :</b> </td>
+          <td colspan="1" class="blank"></td>
+          <td colspan="2" class="total-line">Total</td>
+          <td class="total-value"><div id="subtotal"><%= @invoice.total%></div></td>
+      </tr>
+      
+      <tr>
+
+          <td colspan="2" class="blank">Bank Name: ICICI </td>
+          <td colspan="1" class="blank"></td>
+          <td colspan="2" class="total-line">CGST (14%)</td>
+          <td class="total-value"><div id="total"><%=@invoice.cgst%></div></td>
+      </tr>
+      <tr>
+          <td colspan="2" class="blank"> Account Name: Aura Aerosols</td>
+          <td colspan="1" class="blank"></td>
+          <td colspan="2" class="total-line">SGST (14%) </td>
+          <td class="total-value"><textarea id="paid"><%= @invoice.sgst %></textarea></td>
+      </tr>
+      <tr>
+          <td colspan="2" class="blank">Account Number: 698305600006 </td>
+          <td colspan="1" class="blank"></td>
+          <td colspan="2" class="total-line">GST (28%)</td>
+          <td class="total-value"><textarea id="paid"><%=@invoice.gst%></textarea></td>
+      </tr>
+      
+      <tr>
+          <td colspan="2" class="blank">IFSC code: ICIC0006983</td>
+          <td colspan="1" class="blank"></td>
+          <td colspan="2" class="total-line balance">Grand Total</td>
+          <td class="total-value balance"><div class="due"><%=@invoice.grand_total %></div></td>
+      </tr>
+    
+    </table>
+    <div class="identity">
+    
+    <div><textarea class="declaration">Declaration:I/We hereby certify that my/our registration Certificate under the Maharashtra Value Added Tax Act.2002 in force on the date on which the sale of the goods specified in this Tax Invoice has been effected by me/us and it shall be accounted for in the turnover of sales while filling of return and due tax if any payble on the sale has been paid or shall be.</textarea></div>
+    <div id="terms"> For Aura Aerosols</div>
+    <div id="terms"> Authorized Signatory</div>
+    
+</div>
+  
+</div>
+
+<%= link_to "Edit Invoice", edit_invoice_path(@invoice) %>  
+<%= link_to "Get PDF", invoice_path(@invoice, format: :pdf) %>

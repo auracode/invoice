@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150101170206) do
+ActiveRecord::Schema.define(version: 20170802165324) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "invoices", force: :cascade do |t|
+    t.string   "invoice_number"
+    t.date     "invoice_date"
+    t.string   "billing_name"
+    t.text     "billing_address"
+    t.string   "billing_state"
+    t.integer  "billing_state_code"
+    t.string   "billing_gstid"
+    t.text     "description"
+    t.integer  "quantity"
+    t.float    "rate"
+    t.string   "purchase_order_no"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -27,9 +45,9 @@ ActiveRecord::Schema.define(version: 20150101170206) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.string   "api_source"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

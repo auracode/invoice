@@ -80,3 +80,11 @@ section {
   @extend .btn-primary;
   @extend .btn-xs;
 }
+
+// styles for some views
+.panel-primary {
+  width: 50%;
+}
+.width-form-fix {
+  width:40%
+}

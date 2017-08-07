@@ -1,0 +1,13 @@
+<%= simple_form_for @invoice do |f| %>
+    <%= f.input :invoice_number,input_html: { class: "width-form-fix" } %>
+    <%= f.input :invoice_date, as: :date ,input_html: { class: "width-form-fix" }%>
+    <%= f.input :billing_name,input_html: { class: "width-form-fix" }, required: true %>
+    <%= f.input :billing_address, as: :text ,:input_html => {:style => 'width: 40% ; height: 20%'} %>
+	<%= f.input :billing_state_code ,input_html: { class: "width-form-fix" } %>
+	<%= f.input :billing_gstid ,input_html: { class: "width-form-fix" } %>
+	<%= f.input :description ,input_html: { class: "width-form-fix" }%>
+	<%= f.input :quantity ,input_html: { class: "width-form-fix" } %>
+	<%= f.input :rate ,input_html: { class: "width-form-fix" } %>
+	<%= f.input :purchase_order_no ,input_html: { class: "width-form-fix" } %>	
+    <%= f.button :submit %>
+<% end %>
