@@ -20,10 +20,23 @@
       <p>email id : accounts@auraaerosols.in</p>
 
 
-      <div class="inline"><b>GST id:</b><p>27AAVFA6549B1Z7</p><b>Pan No:</b><p>AAVFA6549B</p></div>
-     </div>
-     <div style="clear:both"></div>
+     <div class="row-fluid">
+    <div class="span12">
 
+        <!-- Changed from `hidden` to `auto`. -->
+       
+
+            <!-- This is the div that does the trick: -->
+            <div style="width:1200px;">
+
+            <div style="display:inline-block;width:150px;"><b>GST id:</b><p>27AAVFA6549B1Z7</p></div>
+            <div style="display:inline-block;width:100px;"><b>Pan No:</b><p>AAVFA6549B</p></div>
+            
+        </div>
+    </div>
+</div>
+     <div style="clear:both"></div>
+<hr style="width:100%;border-bottom: 2px solid gray">
       <div id="customer">
   <!--Table Customer -->
            <table id="meta">
@@ -80,14 +93,6 @@
             <td><span class="price"><%= @invoice.total %></span></td>
         </tr>
 
-        <tr class="item-row">
-            <td class=""><textarea>2</textarea></td>
-            <td class="description"><textarea>Water Diffuser Refill</textarea></td>
-            <td><textarea class="qty">3304900</textarea></td>
-            <td><textarea class="qty">1</textarea></td>
-            <td><textarea class="cost">$650.00</textarea></td>
-            <td><span class="price">$650.00</span></td>
-        </tr>
         
         <tr>
             <td colspan="2" class="blank"><b>NEFT Details :</b> </td>
