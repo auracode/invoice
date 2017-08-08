@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'simple_form'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'humanize'
 group :development, :test do
   gem 'byebug', platform: :mri
 end

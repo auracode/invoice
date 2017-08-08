@@ -117,8 +117,9 @@
           <td colspan="2" class="blank">IFSC code: ICIC0006983</td>
           <td colspan="1" class="blank"></td>
           <td colspan="2" class="total-line balance">Grand Total</td>
-          <td class="total-value balance"><div class="due"><%=@invoice.grand_total %></div></td>
+          <td class="total-value balance"><div class="due"><%=@invoice.grand_total.round(0) %></div></td>
       </tr>
+      <tr><td colspan="6">Amount in figures: <%= @invoice.grand_total.round(0).humanize%> rupees</td></tr>
     
     </table>
     <div class="identity">

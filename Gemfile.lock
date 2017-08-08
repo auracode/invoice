@@ -92,6 +92,7 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     high_voltage (3.0.0)
+    humanize (1.4.0)
     i18n (0.7.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -241,6 +242,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   high_voltage
+  humanize
   jbuilder (~> 2.5)
   jquery-rails
   launchy
