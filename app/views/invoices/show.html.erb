@@ -38,7 +38,7 @@
                 </tr>
                 <tr>
                     <td class="meta-head">Date</td>
-                    <td><textarea id="date"><%= @invoice.invoice_date %></textarea></td>
+                    <td><textarea id="date"><%= @invoice.invoice_date.strftime("%d-%m-%y") %></textarea></td>
                 </tr>
                 <tr>
                     <td class="meta-head">Purchase Order No:</td>
