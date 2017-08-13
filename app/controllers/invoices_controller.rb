@@ -1,4 +1,6 @@
 class InvoicesController < ApplicationController
+  
+
   def index
   	@customers = User.customers
   end
@@ -24,7 +26,7 @@ class InvoicesController < ApplicationController
   respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "Invoice#{@invoice.billing_name}"   # Excluding ".pdf" extension.
+        render pdf: "#{@invoice.billing_name}"   # Excluding ".pdf" extension.
       end
     end
   end
@@ -42,6 +44,11 @@ class InvoicesController < ApplicationController
       render 'edit'
     end
   end
+
+  def invoice_list
+    @customers = User.customers
+    @invoices = Invoice.all
+  end
  
  private
 
@@ -49,4 +56,5 @@ class InvoicesController < ApplicationController
       params.require(:invoice).permit(:invoice_number, :invoice_date, :billing_name, :billing_address, :billing_state_code, :billing_gstid, :description , :quantity, :rate, :purchase_order_no)
     end
 
+  
 end

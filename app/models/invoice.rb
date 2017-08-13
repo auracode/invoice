@@ -1,4 +1,6 @@
 class Invoice < ApplicationRecord
+	after_create_commit :set_month
+
 	def total
 		@invoice = Invoice.find(self.id)
 		((@invoice.quantity)*(@invoice.rate)).round(2)
@@ -23,5 +25,12 @@ class Invoice < ApplicationRecord
 		@invoice = Invoice.find(self.id)
 		((@invoice.total) + (@invoice.gst)).round(2)
 	end
+
+	def set_month
+      @invoice = Invoice.find(self.id)
+      @invoice.month = @invoice.invoice_date.month
+      @invoice.save
+      
+    end
 
 end
