@@ -3,15 +3,10 @@
 <table border="1" cellpadding="5" cellspacing="5">
   <tr>
     <th>Name</th>
-    <th>July</th>
-    <th>Aug</th>
-    <th>Sept</th>
-    <th>Oct</th>
-    <th>Nov</th>
-    <th>Dec</th>
-    <th>Jan</th>
-    <th>Feb</th>
-    <th>March</th>
+    <%["July","Aug","Sept","Oct","Nov","Dec","Jan","Feb","March"].each do |tt| %>
+    <th><%= tt %></th>
+
+    <% end %>
   </tr>
  
   <% @customers.each do |customer| %>
@@ -19,15 +14,16 @@
       
     <tr>
       <td><%= customer["name"] %></td>
-      <td><%= link_to "#{@invoices.where(:billing_name => customer["name"], :month => 6).map { |e| e.invoice_number }}", "#" %></td>
-      <td><%= link_to "#{@invoices.where(:billing_name => customer["name"], :month => 7).map { |e| e.invoice_number  }}", "#" %></td>
-      <td><%= link_to "Bill Sept", "#" %></td>
-      <td><%= link_to "Bill Oct", "#" %></td>
-      <td><%= link_to "Bill Nov", "#" %></td>
-      <td><%= link_to "Bill Dec", "#" %></td>
-      <td><%= link_to "Bill Jan", "#" %></td>
-      <td><%= link_to "Bill Feb", "#" %></td>
-      <td><%= link_to "Bill March", "#" %></td>
+      
+      <% [7,8,9,10,11,12,1,2,3].each do |month|%>
+      <td>
+      <% @invoices.where(:billing_name => customer["name"], :month => month).map { |e| e.invoice_number }.each do | m | %>
+      <%= link_to "#{ m },", edit_invoice_path(Invoice.where(:invoice_number => m).first.id) %>
+      <% end %>
+      </td>
+      <%  end %>
+      
+
       </tr>
   <% end %>
 </table>
