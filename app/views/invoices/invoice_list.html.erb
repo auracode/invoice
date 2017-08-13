@@ -17,13 +17,11 @@
       
       <% [7,8,9,10,11,12,1,2,3].each do |month|%>
       <td>
-      <% @invoices.where(:billing_name => customer["name"], :month => month).map { |e| e.invoice_number }.each do | m | %>
-      <%= link_to "#{ m },", edit_invoice_path(Invoice.where(:invoice_number => m).first.id) %>
+          <% @invoices.where(:billing_name => customer["name"], :month => month).map { |e| e.invoice_number }.each do | m | %>
+            <%= link_to "#{ m },", edit_invoice_path(Invoice.where(:invoice_number => m).first.id) %>
       <% end %>
       </td>
-      <%  end %>
-      
-
+      <% end %>
       </tr>
   <% end %>
 </table>

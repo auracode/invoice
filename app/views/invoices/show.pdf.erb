@@ -7,10 +7,10 @@
     <%= javascript_include_tag wicked_pdf_asset_base64('application.js') %>
 
   </head>
-  <body>
-    <div id="page-wrap">
-      <textarea id="header" class="headerstyle">TAX INVOICE</textarea>
-      <div id="identity">
+  <body style="font:16px Georgia, serif;">
+    <div id="page-wrap" style="width: 1000px; margin: 0 auto;">
+      <textarea id="header" class="headerstyle" style="font-size: 18px !important;">TAX INVOICE</textarea>
+      <div id="identity" style="font-size: 18px;">
         <h3><b>Aura Aerosols </b></h3>
           <div id="logo">              
                 <%= image_tag wicked_pdf_asset_base64('logo.png'), :id => "image" %>
@@ -27,9 +27,9 @@
        
 
             <!-- This is the div that does the trick: -->
-            <div style="width:1200px;">
+            <div style="width:3000px;">
 
-            <div style="display:inline-block;width:150px;"><b>GST id:</b><p>27AAVFA6549B1Z7</p></div>
+            <div style="display:inline-block;width:200px;"><b>GST id:</b><p>27AAVFA6549B1Z7</p></div>
             <div style="display:inline-block;width:100px;"><b>Pan No:</b><p>AAVFA6549B</p></div>
             
         </div>
@@ -42,11 +42,11 @@
            <table id="meta">
                   <tr>
                       <td class="meta-head">Invoice #</td>
-                      <td><textarea><%= @invoice.invoice_number%></textarea></td>
+                      <td><%= @invoice.invoice_number%></td>
                   </tr>
                   <tr>
                       <td class="meta-head">Date</td>
-                      <td><textarea id="date"><%= @invoice.invoice_date.strftime("%d-%m-%y") %></textarea></td>
+                      <td><%= @invoice.invoice_date.strftime("%d-%m-%y") %></td>
                   </tr>
                   <tr>
                       <td class="meta-head">Purchase Order No:</td>
@@ -58,12 +58,12 @@
               <table>
                   <tr>
                       <td class="meta-head">Billing Name:</td>
-                      <td><textarea id="customer-title"><%= @invoice.billing_name %> </textarea></td>
+                      <td><textarea style="font-size: 18px !important;"><%= @invoice.billing_name %> </textarea></td>
                   </tr>
                   <tr>
 
                       <td class="meta-head">Billing Address:</td>
-                      <td><textarea id="address"><%= @invoice.billing_address%></textarea></td>
+                      <td><textarea id="address" style="font-size: 18px !important;"><%= @invoice.billing_address%></textarea></td>
                   </tr>
                   <tr>
                       <td class="meta-head">GST Id:</td>
@@ -73,7 +73,7 @@
               </table>
       </div>
       
-      <table id="items">
+      <table id="items" style="font-size: 18px;">
       
         <tr>
             <th>Sr No.</th>
@@ -86,10 +86,10 @@
         
         <tr class="item-row">
             <td class="">1</td>
-            <td class="description"><textarea><%= @invoice.description %></textarea></td>
-             <td><textarea class="qty">3304900</textarea></td>
-            <td><textarea class="qty"><%= @invoice.quantity %></textarea></td>
-            <td><textarea class="cost"><%= @invoice.rate %></textarea></td>
+            <td class="description"><textarea style="font-size: 18px !important;"><%= @invoice.description %></textarea></td>
+             <td><textarea class="qty" style="font-size: 18px !important;">3304900</textarea></td>
+            <td><textarea class="qty" style="font-size: 18px !important;"><%= @invoice.quantity %></textarea></td>
+            <td><textarea class="cost" style="font-size: 18px !important;"><%= @invoice.rate %></textarea></td>
             <td><span class="price"><%= @invoice.total %></span></td>
         </tr>
 
@@ -112,13 +112,13 @@
             <td colspan="2" class="blank"> Account Name: Aura Aerosols</td>
             <td colspan="1" class="blank"></td>
             <td colspan="2" class="total-line">SGST (14%) </td>
-            <td class="total-value"><textarea id="paid"><%= @invoice.sgst %></textarea></td>
+            <td class="total-value"><textarea id="paid" style="font-size: 18px !important;"><%= @invoice.sgst %></textarea></td>
         </tr>
         <tr>
             <td colspan="2" class="blank">Account Number: 698305600006 </td>
             <td colspan="1" class="blank"></td>
             <td colspan="2" class="total-line">GST (28%)</td>
-            <td class="total-value"><textarea id="paid"><%=@invoice.gst%></textarea></td>
+            <td class="total-value"><textarea id="paid" style="font-size: 18px !important;"><%=@invoice.gst%></textarea></td>
         </tr>
         
         <tr>
@@ -132,7 +132,7 @@
       </table>
       <div class="identity">
       
-      <div><textarea class="declaration">Declaration:I/We hereby certify that my/our registration Certificate under the Maharashtra Value Added Tax Act.2002 in force on the date on which the sale of the goods specified in this Tax Invoice has been effected by me/us and it shall be accounted for in the turnover of sales while filling of return and due tax if any payble on the sale has been paid or shall be.</textarea></div>
+      <div><textarea class="declaration" style="font-size: 12px !important;">Declaration:I/We hereby certify that my/our registration Certificate under the Maharashtra Value Added Tax Act.2002 in force on the date on which the sale of the goods specified in this Tax Invoice has been effected by me/us and it shall be accounted for in the turnover of sales while filling of return and due tax if any payble on the sale has been paid or shall be.</textarea></div>
       <div id="terms"> For Aura Aerosols</div>
       <div id="terms"> Authorized Signatory</div>
       
