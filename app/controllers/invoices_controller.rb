@@ -7,6 +7,7 @@ class InvoicesController < ApplicationController
 
   def new
     @invoice = Invoice.new
+    @invoice.invoice_number = params[:invoice_number]
     @invoice.billing_name = params[:billing_name]	
     @invoice.billing_address = params[:billing_address]
     @invoice.billing_gstid = params[:billing_gstid]
