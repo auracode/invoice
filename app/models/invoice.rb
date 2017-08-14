@@ -1,5 +1,6 @@
 class Invoice < ApplicationRecord
 	after_create_commit :set_month
+	validates :invoice_number, uniqueness: true
 
 	def total
 		@invoice = Invoice.find(self.id)
