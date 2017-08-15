@@ -8,11 +8,8 @@ class Invoice < ApplicationRecord
 			csv << desired_columns
 			all.each do |m|
 				csv << ["#{m.invoice_number}", "#{m.invoice_date.strftime("%d-%m-%y")}", "#{m.billing_name}","#{m.billing_gstid}", "#{m.sgst}", "#{m.cgst}","#{m.gst}","#{m.grand_total}"]
-				
 			end
-
 		end
-		
 	end
 
 	def total
