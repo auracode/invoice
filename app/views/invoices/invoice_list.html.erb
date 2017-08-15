@@ -1,4 +1,8 @@
 <p>View the invoices for customers</p>
+<p>
+  Download 
+  <%= link_to "Excel", invoices_invoice_list_path(format: "xls")%>
+</p>
 
 <table border="1" cellpadding="5" cellspacing="5">
   <tr>

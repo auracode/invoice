@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Invoice Number</Data></Cell>
+        <Cell><Data ss:Type="String">Invoice Date</Data></Cell>
+        <Cell><Data ss:Type="String">Party Name</Data></Cell>
+        <Cell><Data ss:Type="String">SGST</Data></Cell>
+        <Cell><Data ss:Type="String">CGST</Data></Cell>
+        <Cell><Data ss:Type="String">GST</Data></Cell>
+        <Cell><Data ss:Type="String">Grand Amount</Data></Cell>
+      </Row>
+    <% @invoices.each do |invoice| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= invoice.invoice_number %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= invoice.invoice_date.strftime("%d-%m-%y") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= invoice.billing_name %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= invoice.sgst %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= invoice.cgst %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= invoice.gst %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= invoice.grand_total %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
+
