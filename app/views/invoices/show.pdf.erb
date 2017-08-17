@@ -31,7 +31,6 @@
 
             <div style="display:inline-block;width:200px;"><b>GST id:</b><p>27AAVFA6549B1Z7</p></div>
             <div style="display:inline-block;width:100px;"><b>Pan No:</b><p>AAVFA6549B</p></div>
-            
         </div>
     </div>
 </div>
@@ -55,10 +54,10 @@
 
               </table>
 
-              <table>
+              <table id="stretch">
                   <tr>
                       <td class="meta-head">Billing Name:</td>
-                      <td><textarea style="font-size: 18px !important;"><%= @invoice.billing_name %> </textarea></td>
+                      <td><div style="font-size: 18px !important;"><%= @invoice.billing_name %> </div></td>
                   </tr>
                   <tr>
 
@@ -69,6 +68,11 @@
                       <td class="meta-head">GST Id:</td>
                       <td><div class="due"><%=@invoice.billing_gstid %></div></td>
                   </tr>
+                  <tr>
+                      <td class="meta-head">GST State Code:</td>
+                      <td><div class="due"><%=@invoice.billing_state_code %></div></td>
+                  </tr>
+
 
               </table>
       </div>
@@ -87,7 +91,7 @@
         <tr class="item-row">
             <td class="">1</td>
             <td class="description"><textarea style="font-size: 18px !important;"><%= @invoice.description %></textarea></td>
-             <td><textarea class="qty" style="font-size: 18px !important;">3304900</textarea></td>
+             <td><textarea class="qty" style="font-size: 18px !important;">3307</textarea></td>
             <td><textarea class="qty" style="font-size: 18px !important;"><%= @invoice.quantity %></textarea></td>
             <td><textarea class="cost" style="font-size: 18px !important;"><%= @invoice.rate %></textarea></td>
             <td><span class="price"><%= @invoice.total %></span></td>
@@ -132,7 +136,7 @@
       </table>
       <div class="identity">
       
-      <div><textarea class="declaration" style="font-size: 12px !important;">Declaration:I/We hereby certify that my/our registration Certificate under the Maharashtra Value Added Tax Act.2002 in force on the date on which the sale of the goods specified in this Tax Invoice has been effected by me/us and it shall be accounted for in the turnover of sales while filling of return and due tax if any payble on the sale has been paid or shall be.</textarea></div>
+      <div><textarea class="declaration" style="font-size: 12px !important;"></textarea></div>
       <div id="terms"> For Aura Aerosols</div>
       <div id="terms"> Authorized Signatory</div>
       
