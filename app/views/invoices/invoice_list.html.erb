@@ -14,14 +14,14 @@
   </tr>
  
   <% @customers.each do |customer| %>
-    <% client = Hash[:billing_name => customer["name"], :billing_address => customer["address"], :billing_gstid => customer["gstid"], :quantity => customer["machine_count"], :rate => customer["plan"]] %>
+    <% client = Hash[:billing_name => customer["name"], :billing_address => customer["address"], :billing_gstid => customer["gstid"], :quantity => customer["machine_count"], :rate => customer["plan"], :consumer_no => customer["consumer_no"]] %>
       
     <tr>
       <td><%= customer["name"] %></td>
       
       <% [7,8,9,10,11,12,1,2,3].each do |month|%>
       <td>
-          <% @invoices.where(:billing_name => customer["name"], :month => month).map { |e| e.invoice_number }.each do | m | %>
+          <% @invoices.where(:billing_name => customer["name"], :month => month).map { |e| e.invoice_number }.each do | m | # , :consumer_no => customer["consumer_no"]%>
             <%= link_to "#{ m },", invoice_path(Invoice.where(:invoice_number => m).first.id) %>
       <% end %>
       </td>

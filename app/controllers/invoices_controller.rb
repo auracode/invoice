@@ -13,6 +13,7 @@ class InvoicesController < ApplicationController
     @invoice.billing_gstid = params[:billing_gstid]
     @invoice.quantity = params[:quantity]
     @invoice.rate = params[:rate]
+    @invoice.consumer_no = params[:consumer_no]
       
   end
 
@@ -59,7 +60,7 @@ class InvoicesController < ApplicationController
  private
 
     def invoice_params
-      params.require(:invoice).permit(:invoice_number, :invoice_date, :billing_name, :billing_address, :billing_state_code, :billing_gstid, :description , :quantity, :rate, :purchase_order_no)
+      params.require(:invoice).permit(:invoice_number, :invoice_date, :billing_name, :billing_address, :billing_state_code, :billing_gstid, :description , :quantity, :rate, :purchase_order_no, :consumer_no)
     end
 
   

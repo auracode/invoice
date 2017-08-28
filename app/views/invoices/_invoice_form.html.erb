@@ -1,4 +1,5 @@
 <%= simple_form_for @invoice do |f| %>
+	<%= f.input :consumer_no, input_html: { class: "width-form-fix" } %>
     <%= f.input :invoice_number,input_html: { class: "width-form-fix" } %>
     <%= f.input :invoice_date, as: :date ,input_html: { class: "width-form-fix" }%>
     <%= f.input :billing_name,input_html: { class: "width-form-fix" }, required: true %>

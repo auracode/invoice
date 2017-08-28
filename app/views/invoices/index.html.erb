@@ -14,7 +14,7 @@
     <tr>
       <td><%= customer["consumer_no"] %></td>
       <td><%= customer["name"] %></td>
-      <% client = Hash[:billing_name => customer["name"], :billing_address => customer["address"], :billing_gstid => customer["gstid"], :quantity => customer["machine_count"], :rate => customer["plan"], :invoice_number => "#{customer["consumer_no"]}/#{DateTime.now.strftime("%m-%y")}/#{Invoice.where(:billing_name => customer["name"]).count+1}"] %>
+      <% client = Hash[:consumer_no => customer["consumer_no"],:billing_name => customer["name"], :billing_address => customer["address"], :billing_gstid => customer["gstid"], :quantity => customer["machine_count"], :rate => customer["plan"], :invoice_number => "#{customer["consumer_no"]}/#{DateTime.now.strftime("%m-%y")}/#{Invoice.where(:billing_name => customer["name"]).count+1}"] %>
        <td><%= link_to "Create Bill", new_invoice_path(client) %></td>
       </tr>
   <% end %>
