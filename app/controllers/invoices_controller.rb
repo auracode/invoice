@@ -20,7 +20,23 @@ class InvoicesController < ApplicationController
   def create
 		@invoice = Invoice.new(invoice_params)
 		@invoice.save
-		redirect_to @invoice
+    if @invoice.type == true
+    redirect_to @invoice
+    else 
+      redirect_to invoices_challan_path(@invoice)
+
+		end
+  end
+
+  def challan
+    @invoice = Invoice.find(params[:id])
+   respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "#{@invoice.billing_name}"   # Excluding ".pdf" extension.
+      end
+    end
+    
   end
 
   def show
