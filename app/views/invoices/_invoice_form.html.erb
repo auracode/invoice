@@ -1,5 +1,5 @@
 <%= simple_form_for @invoice do |f| %>
-	<%= f.input :type, :collection => [[true, 'Bill'], [false, 'Challan']], :label_method => :last, :value_method => :first, as: :radio_buttons, boolean_style: :inline, checked: true %>
+	<%= f.input :billing_type, :collection => [[true, 'Bill'], [false, 'Challan']], :label_method => :last, :value_method => :first, as: :radio_buttons, boolean_style: :inline, checked: true %>
 	<%= f.input :consumer_no, input_html: { class: "width-form-fix" } %>
     <%= f.input :invoice_number,input_html: { class: "width-form-fix" } %>
     <%= f.input :invoice_date, as: :date ,input_html: { class: "width-form-fix" }%>

@@ -20,10 +20,11 @@ class InvoicesController < ApplicationController
   def create
 		@invoice = Invoice.new(invoice_params)
 		@invoice.save
-    if @invoice.type == true
+
+    if @invoice.billing_type == true
     redirect_to @invoice
     else 
-      redirect_to invoices_challan_path(@invoice)
+      redirect_to challan_invoice_path(@invoice)
 
 		end
   end
@@ -33,7 +34,10 @@ class InvoicesController < ApplicationController
    respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "#{@invoice.billing_name}"   # Excluding ".pdf" extension.
+        render pdf: "#{@invoice.billing_name}" 
+
+        #template:  'invoices/#{format}/challan.pdf.erb'
+          # Excluding ".pdf" extension.
       end
     end
     
@@ -76,7 +80,7 @@ class InvoicesController < ApplicationController
  private
 
     def invoice_params
-      params.require(:invoice).permit(:invoice_number, :invoice_date, :billing_name, :billing_address, :billing_state_code, :billing_gstid, :description , :quantity, :rate, :purchase_order_no, :consumer_no)
+      params.require(:invoice).permit(:invoice_number, :invoice_date, :billing_name, :billing_address, :billing_state_code, :billing_gstid, :description , :quantity, :rate, :purchase_order_no, :consumer_no, :billing_type)
     end
 
   

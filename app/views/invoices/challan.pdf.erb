@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <%= stylesheet_link_tag wicked_pdf_asset_base64('application.css.scss') %>
+
+    <%= javascript_include_tag wicked_pdf_asset_base64('application.js') %>
+
+  </head>
+  <body style="font:16px Georgia, serif;">
+    <div id="page-wrap" style="width: 1000px; margin: 0 auto;">
+      <textarea id="header" class="headerstyle" style="font-size: 18px !important;">TAX INVOICE</textarea>
+      <div id="identity" style="font-size: 18px;">
+        <h3><b>Aura Aerosols </b></h3>
+          <div id="logo">              
+                <%= image_tag wicked_pdf_asset_base64('logo.png'), :id => "image" %>
+          </div>
+      <p>Address:215, Siddhivinayak Sankul, Near Gurudev Hotel, Station Road, Kalyan West, MS -421301</p>
+      <p>Phone No: 9930648544 / 9082006201</p>
+      <p>email id : accounts@auraaerosols.in</p>
+
+
+     <div class="row-fluid">
+    <div class="span12">
+
+        <!-- Changed from `hidden` to `auto`. -->
+       
+
+            <!-- This is the div that does the trick: -->
+            <div style="width:3000px;">
+
+            <div style="display:inline-block;width:200px;"><b>GST id:</b><p>27AAVFA6549B1Z7</p></div>
+            <div style="display:inline-block;width:100px;"><b>Pan No:</b><p>AAVFA6549B</p></div>
+            
+        </div>
+    </div>
+</div>
+     <div style="clear:both"></div>
+<hr style="width:100%;border-bottom: 2px solid gray">
+      <div id="customer">
+  <!--Table Customer -->
+           <table id="meta">
+                  <tr>
+                      <td class="meta-head">Invoice #</td>
+                      <td><%= @invoice.invoice_number%></td>
+                  </tr>
+                  <tr>
+                      <td class="meta-head">Date</td>
+                      <td><%= @invoice.invoice_date.strftime("%d-%m-%y") %></td>
+                  </tr>
+                  <tr>
+                      <td class="meta-head">Purchase Order No:</td>
+                      <td><div class="due"><%= @invoice.purchase_order_no %> </div></td>
+                  </tr>
+
+              </table>
+
+              <table id="stretch">
+                  <tr>
+                      <td class="meta-hea">Billing Name:</td>
+                      <td><div style="font-size: 18px !important;"><%= @invoice.billing_name %> </div></td>
+                  </tr>
+                  <tr>
+
+                      <td class="meta-head">Billing Address:</td>
+                      <td><textarea id="address" style="font-size: 18px !important;"><%= @invoice.billing_address%></textarea></td>
+                  </tr>
+                  <tr>
+                      <td class="meta-head">GST Id:</td>
+                      <td><div class="due"><%=@invoice.billing_gstid %></div></td>
+                  </tr>
+
+              </table>
+      </div>
+      
+      <table id="items" style="font-size: 18px;">
+      
+        <tr>
+            <th>Sr No.</th>
+            <th>Description</th>
+            <th>HSN Code</th>
+            <th>Quantity</th>
+            <th>Rate</th>
+            <th>Total</th>
+        </tr>
+        
+        <tr class="item-row">
+            <td class="">1</td>
+            <td class="description"><textarea style="font-size: 18px !important;"><%= @invoice.description %></textarea></td>
+             <td><textarea class="qty" style="font-size: 18px !important;">3307</textarea></td>
+            <td><textarea class="qty" style="font-size: 18px !important;"><%= @invoice.quantity %></textarea></td>
+            <td><textarea class="cost" style="font-size: 18px !important;"><%= @invoice.rate %></textarea></td>
+            <td><span class="price"><%= @invoice.total %></span></td>
+        </tr>
+
+        
+        <tr>
+            <td colspan="2" class="blank"> </td>
+            <td colspan="1" class="blank"></td>
+            <td colspan="2" class="total-line">Total</td>
+            <td class="total-value"><div id="subtotal"><%= @invoice.total%></div></td>
+        </tr>
+        
+        <tr>
+
+            <td colspan="2" class="blank"> </td>
+            <td colspan="1" class="blank"></td>
+            <td colspan="2" class="total-line"></td>
+            <td class="total-value"><div id="total"></div></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="blank"> </td>
+            <td colspan="1" class="blank"></td>
+            <td colspan="2" class="total-line"> </td>
+            <td class="total-value"><textarea id="paid" style="font-size: 18px !important;"></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="blank"></td>
+            <td colspan="1" class="blank"></td>
+            <td colspan="2" class="total-line"></td>
+            <td class="total-value"><textarea id="paid" style="font-size: 18px !important;"></textarea></td>
+        </tr>
+        
+        <tr>
+            <td colspan="2" class="blank"></td>
+            <td colspan="1" class="blank"></td>
+            <td colspan="2" class="total-line balance">Total</td>
+            <td class="total-value balance"><div class="due"></div><%= @invoice.total%></td>
+        </tr>
+        <tr><td colspan="6">Amount in figures: <%= @invoice.total.round(0).humanize%> rupees</td></tr>
+      
+      </table>
+      <div class="identity">
+      
+      <div><textarea class="declaration" style="font-size: 12px !important;"></textarea></div>
+      <div id="terms"> For Aura Aerosols</div>
+      <div id="terms"> Authorized Signatory</div>
+      
+  </div>
+    
+  </div>
+
+</body>
+</html>
