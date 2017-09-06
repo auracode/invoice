@@ -21,11 +21,14 @@ class InvoicesController < ApplicationController
 		@invoice = Invoice.new(invoice_params)
 		@invoice.save
 
-    if @invoice.billing_type == true
-    redirect_to @invoice
-    else 
-      redirect_to challan_invoice_path(@invoice)
+    print @invoice.billing_type
 
+    if @invoice.billing_type == "true"
+      print "yeah! its an invoice"
+    redirect_to @invoice
+    elsif @invoice.billing_type == "false"
+      print "yeah! its a challan"
+      redirect_to challan_invoice_path(@invoice)
 		end
   end
 
@@ -59,9 +62,12 @@ class InvoicesController < ApplicationController
 
   def update
     @invoice = Invoice.find(params[:id])
-    if @invoice.update_attributes(invoice_params)
+    if @invoice.update_attributes(invoice_params) && @invoice.billing_type == "true"
       flash[:success] = "Invoice updated!"
     redirect_to invoice_path(@invoice)
+  elsif @invoice.update_attributes(invoice_params) && @invoice.billing_type == "false"
+      flash[:success] = "Challan updated!"
+      redirect_to challan_invoice_path(@invoice)
     else
       render 'edit'
     end

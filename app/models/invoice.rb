@@ -3,11 +3,11 @@ class Invoice < ApplicationRecord
 	validates :invoice_number, uniqueness: true
 
 	def self.to_csv(options = {})
-		desired_columns = ["Invoice no", "Invoice Date", "Party Name","GST Number","Sub Total", "SGST", "CGST", "GST", "Grand Total"]
+		desired_columns = ["Sr no","Invoice no", "Invoice Date", "Party Name","GST Number","Sub Total", "SGST", "CGST", "GST", "Grand Total"]
 		CSV.generate(options) do | csv |
 			csv << desired_columns
 			all.each do |m|
-				csv << ["#{m.invoice_number}", "#{m.invoice_date.strftime("%d-%m-%y")}", "#{m.billing_name}","#{m.billing_gstid}","#{m.total}", "#{m.sgst}", "#{m.cgst}","#{m.gst}","#{m.grand_total}"]
+				csv << ["#{m.id}","#{m.invoice_number}", "#{m.invoice_date.strftime("%d-%m-%y")}", "#{m.billing_name}","#{m.billing_gstid}","#{m.total}", "#{m.sgst}", "#{m.cgst}","#{m.gst}","#{m.grand_total}"]
 			end
 		end
 	end
