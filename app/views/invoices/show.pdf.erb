@@ -91,7 +91,7 @@
         <tr class="item-row">
             <td class="">1</td>
             <td class="description"><textarea style="font-size: 18px !important;"><%= @invoice.description %></textarea></td>
-             <td><textarea class="qty" style="font-size: 18px !important;">3307</textarea></td>
+             <td><textarea class="qty" style="font-size: 18px !important;"><%= @invoice.hsn_code.present? ? @invoice.hsn_code : '3307' %></textarea></td>
             <td><textarea class="qty" style="font-size: 18px !important;"><%= @invoice.quantity %></textarea></td>
             <td><textarea class="cost" style="font-size: 18px !important;"><%= @invoice.rate %></textarea></td>
             <td><span class="price"><%= @invoice.total %></span></td>
