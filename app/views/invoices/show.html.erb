@@ -99,19 +99,19 @@
 
             <td colspan="2" class="blank">Bank Name: ICICI </td>
             <td colspan="1" class="blank"></td>
-            <td colspan="2" class="total-line">CGST (14%)</td>
+            <td colspan="2" class="total-line">CGST (<%=(@invoice.gst_rate)/2 if @invoice.gst_rate.present?%> %)</td>
             <td class="total-value"><div id="total"><%=@invoice.cgst%></div></td>
         </tr>
         <tr>
             <td colspan="2" class="blank"> Account Name: Aura Aerosols</td>
             <td colspan="1" class="blank"></td>
-            <td colspan="2" class="total-line">SGST (14%) </td>
+            <td colspan="2" class="total-line">SGST (<%=(@invoice.gst_rate)/2 if @invoice.gst_rate.present?%> %) </td>
             <td class="total-value"><textarea id="paid" style="font-size: 18px !important;"><%= @invoice.sgst %></textarea></td>
         </tr>
         <tr>
             <td colspan="2" class="blank">Account Number: 698305600006 </td>
             <td colspan="1" class="blank"></td>
-            <td colspan="2" class="total-line">GST (28%)</td>
+            <td colspan="2" class="total-line">GST (<%=(@invoice.gst_rate) if @invoice.gst_rate.present?%> %)</td>
             <td class="total-value"><textarea id="paid" style="font-size: 18px !important;"><%=@invoice.gst%></textarea></td>
         </tr>
         

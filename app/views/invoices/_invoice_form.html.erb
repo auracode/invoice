@@ -10,6 +10,12 @@
 	<%= f.input :description ,input_html: { value: f.object.description || 'Automatic Air freshener refill',class: "width-form-fix" }%>
 	<%= f.input :quantity ,input_html: { class: "width-form-fix" } %>
 	<%= f.input :rate ,input_html: { class: "width-form-fix" } %>
+	<%= f.input :gst_rate, priority: ['28'], :collection => [ '28' ,'18','12','6'], :include_blank => false,  input_html: {value: f.object.gst_rate || '28',class: "width-form-fix" } %>
 	<%= f.input :purchase_order_no ,input_html: { class: "width-form-fix" } %>	
+	<%= f.input :payment_status,:collection => ["Pending","Paid","Part-Payment"], :include_blank => false,  input_html: { class: "width-form-fix" } %>	
+	<%= f.input :payment_type ,:collection => ["Not Done","Cheque","Cash","NEFT", "PayTm"], :include_blank => false, input_html: { class: "width-form-fix" } %>	
+	<%= f.input :payment_collected_by ,input_html: { class: "width-form-fix" } %>	
+	<%= f.input :payment_collected_on ,as: :date ,input_html: { class: "width-form-fix" } %>	
+	<%= f.input :payment_details ,input_html: { class: "width-form-fix" } %>	
     <%= f.button :submit %>
 <% end %>

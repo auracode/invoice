@@ -19,17 +19,30 @@ class Invoice < ApplicationRecord
 
 	def cgst
 		@invoice = Invoice.find(self.id)
+		if @invoice.gst_rate.present?
+		((@invoice.total)*(@invoice.gst_rate*0.5/100)).round(2)
+		else	
 		((@invoice.total)*0.14).round(2)
+		end
 	end
 
 	def sgst
 		@invoice = Invoice.find(self.id)
+		if @invoice.gst_rate.present?
+		((@invoice.total)*(@invoice.gst_rate*0.5/100)).round(2)
+		else	
 		((@invoice.total)*0.14).round(2)
+		end
 	end
 
 	def gst
 		@invoice = Invoice.find(self.id)
+		if @invoice.gst_rate.present?
+		((@invoice.total)*(@invoice.gst_rate/100.0)).round(2)
+		else	
 		((@invoice.total)*0.28).round(2)
+		end
+		
 	end
 
 	def grand_total
