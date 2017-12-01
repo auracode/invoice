@@ -5,7 +5,7 @@
 <div id="page-wrap" style="width: 1000px; margin: 0 auto;">
       <textarea id="header" class="headerstyle" style="font-size: 18px !important;">TAX INVOICE</textarea>
       <div id="identity" style="font-size: 18px;">
-        <h3><b>Aura Aerosols </b></h3>
+        <h3><b>Aura Aerosols LLP</b></h3>
           <div id="logo">              
                 <%= image_tag wicked_pdf_asset_base64('logo.png'), :id => "image" %>
           </div>
@@ -97,26 +97,26 @@
         
         <tr>
 
-            <td colspan="2" class="blank">Bank Name: ICICI </td>
+            <td colspan="2" class="blank">Bank Name: DENA Bank </td>
             <td colspan="1" class="blank"></td>
             <td colspan="2" class="total-line">CGST (<%= @invoice.gst_rate.present? ? @invoice.gst_rate/2 : '14'%>  %)</td>
             <td class="total-value"><div id="total"><%=@invoice.cgst%></div></td>
         </tr>
         <tr>
-            <td colspan="2" class="blank"> Account Name: Aura Aerosols</td>
+            <td colspan="2" class="blank"> Account Name: Aura Aerosols LLP</td>
             <td colspan="1" class="blank"></td>
             <td colspan="2" class="total-line">SGST (<%=  @invoice.gst_rate.present? ? @invoice.gst_rate/2 : '14' %> %) </td>
             <td class="total-value"><textarea id="paid" style="font-size: 18px !important;"><%= @invoice.sgst %></textarea></td>
         </tr>
         <tr>
-            <td colspan="2" class="blank">Account Number: 698305600006 </td>
+            <td colspan="2" class="blank">Account Number: 050511024030 </td>
             <td colspan="1" class="blank"></td>
             <td colspan="2" class="total-line">GST (<%= @invoice.gst_rate.present? ? @invoice.gst_rate : '28' %> %)</td>
             <td class="total-value"><textarea id="paid" style="font-size: 18px !important;"><%=@invoice.gst%></textarea></td>
         </tr>
         
         <tr>
-            <td colspan="2" class="blank">IFSC code: ICIC0006983</td>
+            <td colspan="2" class="blank">IFSC code: BKDN0470505 </td>
             <td colspan="1" class="blank"></td>
             <td colspan="2" class="total-line balance">Grand Total</td>
             <td class="total-value balance"><div class="due"><%=@invoice.grand_total.round(0) %></div></td>
@@ -127,7 +127,7 @@
       <div class="identity">
       
       <div><textarea class="declaration" style="font-size: 12px !important;"></textarea></div>
-      <div id="terms"> For Aura Aerosols</div>
+      <div id="terms"> For Aura Aerosols LLP</div>
       <div id="terms"> Authorized Signatory</div>
       
   </div>
