@@ -11,7 +11,7 @@
 	<%= f.input :hsn_code ,input_html: { value: f.object.hsn_code || '3307', class: "width-form-fix" } %>
 	<%= f.input :quantity ,input_html: { class: "width-form-fix" } %>
 	<%= f.input :rate ,input_html: { class: "width-form-fix" } %>
-	<%= f.input :gst_rate, priority: ['28'], :collection => [ '28' ,'18','12','6'], :include_blank => false,  input_html: {value: f.object.gst_rate || '28',class: "width-form-fix" } %>
+	<%= f.input :gst_rate, priority: ['18'], :collection => [ '18','12','6'], :include_blank => false,  input_html: {value: f.object.gst_rate || '28',class: "width-form-fix" } %>
 	<%= f.input :purchase_order_no ,input_html: { class: "width-form-fix" } %>	
 	<%= f.input :payment_status,:collection => ["Pending","Paid","Part-Payment"], :include_blank => false,  input_html: { class: "width-form-fix" } %>	
 	<%= f.input :payment_type ,:collection => ["Not Done","Cheque","Cash","NEFT", "PayTm"], :include_blank => false, input_html: { class: "width-form-fix" } %>	
