@@ -1,5 +1,5 @@
 class Invoice < ApplicationRecord
-	after_create_commit :set_month
+	after_create_commit :set_month, :set_year
 	validates :invoice_number, uniqueness: true
 
 	def self.to_csv(options = {})
@@ -57,4 +57,15 @@ class Invoice < ApplicationRecord
       
     end
 
+    def set_year
+      @invoice = Invoice.find(self.id)
+      @invoice.year = @invoice.invoice_date.year 
+      @invoice.save
+    end
+
+    def update_year
+      @invoice = Invoice.find(self.id)
+      @invoice.update_attribute( :year, @invoice.invoice_date.year ) 
+      
+    end
 end
