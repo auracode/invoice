@@ -21,7 +21,7 @@
       
       <% [4,5,6,7,8,9,10,11,12,1,2,3].each do |month|%>
       <td>
-        <% [2017,2018].each  do |year|  %>
+        <% [2018,2019].each  do |year|  %>
           <% @invoices.where(:consumer_no => customer["consumer_no"], :month => month, :year => year).map { |e| e.invoice_number }.each do | m | # , :consumer_no => customer["consumer_no"]%>
             <% @invoice = Invoice.where(:invoice_number => m).first %>
             <%if @invoice.billing_type == "false" %>
