@@ -82,6 +82,16 @@ class InvoicesController < ApplicationController
       format.xls {send_data @invoices.to_csv(col_sep: "\t") }
     end
   end
+
+  def invoice_list1718
+    @customers = User.customers
+    @invoices = Invoice.all
+    respond_to do | format|
+      format.html
+      format.csv {send_data @invoices.to_csv }
+      format.xls {send_data @invoices.to_csv(col_sep: "\t") }
+    end
+  end
  
  private
 

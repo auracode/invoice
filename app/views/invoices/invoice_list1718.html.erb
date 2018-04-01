@@ -1,4 +1,4 @@
-<p>View the invoices for customers FY18-19</p>
+<p>View the invoices for customers in FY17-18</p>
 <p>
   Download 
   <%= link_to "Excel", invoices_invoice_list_path(format: "xls")%>
@@ -7,7 +7,7 @@
 <table border="1" cellpadding="5" cellspacing="5">
   <tr>
     <th>Name</th>
-    <%["April","May","June","July","Aug","Sept","Oct","Nov","Dec","Jan","Feb","March"].each do |tt| %>
+    <%["July","Aug","Sept","Oct","Nov","Dec","Jan","Feb","March"].each do |tt| %>
     <th><%= tt %></th>
 
     <% end %>
@@ -19,7 +19,8 @@
     <tr>
       <td><%= customer["name"] %></td>
       
-      <% [4,5,6,7,8,9,10,11,12,1,2,3].each do |month|%>
+      <% [7,8,9,10,11,12,1,2,3].each do |month|%>
+      
       <td>
         <% [2017,2018].each  do |year|  %>
           <% @invoices.where(:consumer_no => customer["consumer_no"], :month => month, :year => year).map { |e| e.invoice_number }.each do | m | # , :consumer_no => customer["consumer_no"]%>
