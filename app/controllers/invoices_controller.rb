@@ -75,7 +75,7 @@ class InvoicesController < ApplicationController
 
   def invoice_list
     @customers = User.customers
-    @invoices = Invoice.all
+    @invoices = Invoice.invoicesfy1819
     respond_to do | format|
       format.html
       format.csv {send_data @invoices.to_csv }
@@ -85,7 +85,7 @@ class InvoicesController < ApplicationController
 
   def invoice_list1718
     @customers = User.customers
-    @invoices = Invoice.all
+    @invoices = Invoice.invoicesfy1718
     respond_to do | format|
       format.html
       format.csv {send_data @invoices.to_csv }

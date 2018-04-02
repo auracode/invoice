@@ -68,4 +68,16 @@ class Invoice < ApplicationRecord
       @invoice.update_attribute( :year, @invoice.invoice_date.year ) 
       
     end
+
+    def self.invoicesfy1718
+    	year =[2017,2018]
+    	@invoicesall =  Invoice.all
+    	@invoices=@invoicesall.where(:year => year)
+    end
+
+    def self.invoicesfy1819
+    	year =[2019,2018]
+    	@invoicesall =  Invoice.all
+    	@invoices=@invoicesall.where(:year => year)
+    end
 end
