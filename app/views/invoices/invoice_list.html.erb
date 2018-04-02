@@ -14,23 +14,19 @@
   </tr>
  
   <% @customers.each do |customer| %>
-    <% client = Hash[:billing_name => customer["name"], :billing_address => customer["address"], :billing_gstid => customer["gstid"], :quantity => customer["machine_count"], :rate => customer["plan"], :consumer_no => customer["consumer_no"]] %>
-      
     <tr>
       <td><%= customer["name"] %></td>
       
       <% [4,5,6,7,8,9,10,11,12,1,2,3].each do |month|%>
       <td>
-        <% [2018,2019].each  do |year|  %>
-          <% @invoices.where(:consumer_no => customer["consumer_no"], :month => month, :year => year).map { |e| e.invoice_number }.each do | m | # , :consumer_no => customer["consumer_no"]%>
-            <% @invoice = Invoice.where(:invoice_number => m).first %>
+          <% @invoices.where(:consumer_no => customer["consumer_no"], :month => month).map { |e| e.invoice_number }.each do | m | # , :consumer_no => customer["consumer_no"]%>
+            <% @invoice = @invoices.where(:invoice_number => m).first %>
             <%if @invoice.billing_type == "false" %>
             <%= link_to "#{ m },", challan_invoice_path(@invoice.id) %>
             <% else %>
             <%= link_to "#{ m },",  invoice_path(@invoice.id) %>
             <% end %>
-          <%end%>
-      <% end %>
+        <% end %>
       </td>
       <% end %>
       </tr>

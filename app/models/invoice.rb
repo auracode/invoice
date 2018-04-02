@@ -69,6 +69,12 @@ class Invoice < ApplicationRecord
       
     end
 
+    def updatemonth
+    	@invoice = Invoice.find(self.id)
+      @invoice.update_attribute( :month, @invoice.invoice_date.month ) 	
+    	
+    end
+
     def self.invoicesfy1718
     	year =[2017,2018]
     	@invoicesall =  Invoice.all
