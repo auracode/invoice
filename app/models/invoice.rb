@@ -1,7 +1,8 @@
 class Invoice < ApplicationRecord
 	after_create_commit :set_month, :set_year
 	validates :invoice_number, uniqueness: true
-
+	validates :quantity , :rate,  presence: true
+	
 	def self.to_csv(options = {})
 		desired_columns = ["Sr no","Invoice no", "Invoice Date", "Party Name","GST Number","Sub Total", "SGST", "CGST", "GST", "Grand Total"]
 		CSV.generate(options) do | csv |
