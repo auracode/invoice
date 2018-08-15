@@ -97,6 +97,17 @@ class InvoicesController < ApplicationController
     @customers = User.customers
     @invoices = Invoice.invoicesfy1819    
   end
+
+def Q2
+    @customers = User.customers
+    @invoices = Invoice.invoicesfy1819    
+  end
+ 
+def Q3
+    @customers = User.customers
+    @invoices = Invoice.invoicesfy1819    
+  end
+ 
  
 
  private
