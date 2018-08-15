@@ -93,6 +93,12 @@ class InvoicesController < ApplicationController
     end
   end
  
+ def Q1
+    @customers = User.customers
+    @invoices = Invoice.invoicesfy1819    
+  end
+ 
+
  private
 
     def invoice_params
