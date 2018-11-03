@@ -6,15 +6,7 @@ class InvoicesController < ApplicationController
     
   end
 
-  def about
-    @invoices = Invoice.last_month_invoices
-    respond_to do | format|
-      format.html
-      format.csv {send_data @invoices.to_csv }
-      format.xls {send_data @invoices.to_csv(col_sep: "\t") }
-    end
-  end
-
+  
   def new
     @invoice = Invoice.new
     @invoice.invoice_number = params[:invoice_number]
