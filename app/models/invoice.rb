@@ -7,10 +7,15 @@ class Invoice < ApplicationRecord
 		desired_columns = ["Sr no","Invoice no", "Invoice Date", "Party Name","GST Number","Sub Total", "SGST", "CGST", "GST", "Grand Total", "quantity"]
 		CSV.generate(options) do | csv |
 			csv << desired_columns
-			all.each do |m|
+			last_month_invoices.each do |m|
 				csv << ["#{m.id}","#{m.invoice_number}", "#{m.invoice_date.strftime("%d-%m-%y")}", "#{m.billing_name}","#{m.billing_gstid}","#{m.total}", "#{m.sgst}", "#{m.cgst}","#{m.gst}","#{m.grand_total}", "#{m.quantity}"]
 			end
 		end
+	end
+    
+	def self.last_month_invoices
+		@date_list = (Time.now.beginning_of_month - 1.month)..(Time.now.beginning_of_month - 1.day)
+		Invoice.where({invoice_date: @date_list})
 	end
 
 	def total
