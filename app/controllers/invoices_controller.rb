@@ -77,7 +77,9 @@ class InvoicesController < ApplicationController
 
   def invoice_list
     @customers = User.customers
-    @invoices = Invoice.invoicesfy1819
+    @d1819start = Date.today.beginning_of_year.next_quarter.last_year
+    @d1819stop = Date.today.beginning_of_year.next_quarter
+    @invoices = Invoice.where("invoice_date >= ? AND invoice_date <= ?", @d1819start, @d1819stop)
     respond_to do | format|
       format.html
       format.csv {send_data @invoices.to_csv }
@@ -99,12 +101,16 @@ class InvoicesController < ApplicationController
  
  def Q1
     @customers = User.customers
-    @invoices = Invoice.invoicesfy1819    
+    @d1start = Date.today.beginning_of_year.next_quarter.last_year
+    @d1stop = Date.today.beginning_of_year.next_quarter.last_year.end_of_quarter
+    @invoices = Invoice.where("invoice_date >= ? AND invoice_date <= ?", @d1start, @d1stop)    
   end
 
 def Q2
     @customers = User.customers
-    @invoices = Invoice.invoicesfy1819    
+    @d2start = Date.today.beginning_of_year.next_quarter.last_year.next_quarter
+    @d2stop = Date.today.beginning_of_year.next_quarter.last_year.next_quarter.end_of_quarter
+    @invoices = Invoice.where("invoice_date >= ? AND invoice_date <= ?", @d2start, @d2stop) 
   end
  
 def Q3
