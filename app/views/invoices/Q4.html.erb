@@ -13,7 +13,7 @@
     <tr>
       <td><%= customer["name"] %></td>
       
-      <% [10,11,12].each do |month|%>
+      <% [1,2,3].each do |month|%>
       <td>
           <% @invoices.where(:consumer_no => customer["consumer_no"], :month => month).map { |e| e.invoice_number }.each do | m | # , :consumer_no => customer["consumer_no"]%>
             <% @invoice = @invoices.where(:invoice_number => m).first %>
