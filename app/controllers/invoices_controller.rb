@@ -111,7 +111,13 @@ def Q3
     @d3stop = Date.today.beginning_of_year.last_quarter.end_of_quarter
     @invoices = Invoice.where("invoice_date >= ? AND invoice_date <= ?", @d3start, @d3stop)    
 end
- 
+
+def Q4
+    @customers = User.customers
+    @d4start = Date.today.beginning_of_year
+    @d4stop = Date.today.beginning_of_year.end_of_quarter
+    @invoices = Invoice.where("invoice_date >= ? AND invoice_date <= ?", @d4start, @d4stop)    
+end 
  
 
  private

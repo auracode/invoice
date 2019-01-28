@@ -1,0 +1,30 @@
+<p>View the invoices for customers January 2019 to March 2019</p>
+
+<table border="1" cellpadding="5" cellspacing="5">
+  <tr>
+    <th>Name</th>
+    <%["January","February","March"].each do |tt| %>
+    <th><%= tt %></th>
+
+    <% end %>
+  </tr>
+ 
+  <% @customers.each do |customer| %>
+    <tr>
+      <td><%= customer["name"] %></td>
+      
+      <% [10,11,12].each do |month|%>
+      <td>
+          <% @invoices.where(:consumer_no => customer["consumer_no"], :month => month).map { |e| e.invoice_number }.each do | m | # , :consumer_no => customer["consumer_no"]%>
+            <% @invoice = @invoices.where(:invoice_number => m).first %>
+            <%if @invoice.billing_type == "false" %>
+            <%= link_to "#{ m },", challan_invoice_path(@invoice.id) %>
+            <% else %>
+            <%= link_to "#{ m },",  invoice_path(@invoice.id) %>
+            <% end %>
+        <% end %>
+      </td>
+      <% end %>
+      </tr>
+  <% end %>
+</table>
