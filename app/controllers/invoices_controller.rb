@@ -101,22 +101,38 @@ class InvoicesController < ApplicationController
  
  def Q1
     @customers = User.customers
-    @d1start = Date.today.beginning_of_year.next_quarter.last_year
-    @d1stop = Date.today.beginning_of_year.next_quarter.last_year.end_of_quarter
+    if Date.today.year == 2019
+      @d1start = Date.today.beginning_of_year.next_quarter
+      @d1stop = Date.today.beginning_of_year.next_quarter.end_of_quarter
+    else 
+      @d1start = Date.today.beginning_of_year.next_quarter.last_year
+      @d1stop = Date.today.beginning_of_year.next_quarter.last_year.end_of_quarter
+    end
     @invoices = Invoice.where("invoice_date >= ? AND invoice_date <= ?", @d1start, @d1stop)    
   end
 
 def Q2
     @customers = User.customers
-    @d2start = Date.today.beginning_of_year.next_quarter.last_year.next_quarter
-    @d2stop = Date.today.beginning_of_year.next_quarter.last_year.next_quarter.end_of_quarter
+    if 
+      @d2start = Date.today.beginning_of_year.next_quarter.next_quarter
+      @d2stop = Date.today.beginning_of_year.next_quarter.next_quarter.end_of_quarter
+    else
+      @d2start = Date.today.beginning_of_year.next_quarter.last_year.next_quarter
+      @d2stop = Date.today.beginning_of_year.next_quarter.last_year.next_quarter.end_of_quarter
+    end
     @invoices = Invoice.where("invoice_date >= ? AND invoice_date <= ?", @d2start, @d2stop) 
   end
  
 def Q3
     @customers = User.customers
-    @d3start = Date.today.beginning_of_year.last_quarter.beginning_of_quarter
-    @d3stop = Date.today.beginning_of_year.last_quarter.end_of_quarter
+    if Date.today.year == 2019
+      @d3start = Date.today.beginning_of_year.last_quarter.beginning_of_quarter
+      @d3stop = Date.today.beginning_of_year.last_quarter.end_of_quarter
+    else
+      @d3start = Date.today.beginning_of_year.last_quarter.last_year.beginning_of_quarter
+      @d3stop = Date.today.beginning_of_year.last_quarter.end_of_quarter
+    end
+    
     @invoices = Invoice.where("invoice_date >= ? AND invoice_date <= ?", @d3start, @d3stop)    
 end
 
