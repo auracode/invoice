@@ -37,10 +37,10 @@
       <td><%= invoice.quantity%></td>
       <td><%= invoice.rate%></td>
       <td><%= invoice.quantity*invoice.rate %></td>
-      <td><%= 0.09*invoice.quantity*invoice.rate %></td>
-      <td><%= 0.09*invoice.quantity*invoice.rate %></td>
-      <td><%= 0.18*invoice.quantity*invoice.rate %> </td>
-      <td><%= 1.18*invoice.quantity*invoice.rate %></td>
+      <td><%= (0.09*invoice.quantity*invoice.rate).round(2) %></td>
+      <td><%= (0.09*invoice.quantity*invoice.rate).round(2) %></td>
+      <td><%= (0.18*invoice.quantity*invoice.rate).round(2) %> </td>
+      <td><%= (1.18*invoice.quantity*invoice.rate).round(2) %></td>
       
       
     </tr>
