@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'invoices/Q2'=> "invoices#Q2"
   get 'invoices/Q3'=> "invoices#Q3"
   get 'invoices/Q4'=> "invoices#Q4"
+  get 'invoices/list'=> "invoices#list"
 
   root to: 'invoices#index'
   devise_for :users

@@ -1,0 +1,51 @@
+<p>The list is to be seen here</p>
+<p>The list is to be seen here</p>
+<p>The list is to be seen here</p>
+<h1>Listing all the invoices</h1> 
+
+<!--Search Box -->
+
+
+<!--End of Search Box-->
+<table border="1" cellpadding="5" cellspacing="5">
+
+		
+
+  <tr>
+    <th>Invoice no</th>
+    <th>Invoice Date</th>
+    <th>Party Name</th>
+    <th>GST Number</th>
+    <th>quantity</th>
+    <th>Rate</th>
+    <th>Sub total</th>
+    <th>SGST</th>
+    <th>CGST</th>
+    <th>GST</th>
+    <th>Grand Total</th>
+    
+    
+  </tr>
+ 
+<% @invoices.each do |invoice| %> 
+
+    <tr>
+      <td><%= invoice.invoice_number %></td>
+      <td><%= invoice.invoice_date %></td>
+      <td><%= invoice.billing_name %></td>
+      <td><%= invoice.billing_gstid %></td>
+      <td><%= invoice.quantity%></td>
+      <td><%= invoice.rate%></td>
+      <td><%= invoice.quantity*invoice.rate %></td>
+      <td><%= 0.09*invoice.quantity*invoice.rate %></td>
+      <td><%= 0.09*invoice.quantity*invoice.rate %></td>
+      <td><%= 0.18*invoice.quantity*invoice.rate %> </td>
+      <td><%= 1.18*invoice.quantity*invoice.rate %></td>
+      
+      
+    </tr>
+  <% end %>
+</table>
+<br>
+
+<th></th>

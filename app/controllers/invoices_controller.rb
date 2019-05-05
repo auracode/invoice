@@ -142,6 +142,11 @@ def Q4
     @d4stop = Date.today.beginning_of_year.end_of_quarter
     @invoices = Invoice.where("invoice_date >= ? AND invoice_date <= ?", @d4start, @d4stop)    
 end 
+
+def list
+    @date_list = (Time.now.beginning_of_month - 1.month)..(Time.now.beginning_of_month - 1.day)
+    @invoices = Invoice.where({invoice_date: @date_list})
+end
  
 
  private
